@@ -1,0 +1,9 @@
+MODEL:
+  ID: "yolov8n.pt"
+
+VIDEO:
+  SRC_FILE: "store.mp4"
+
+THRESHOLD:
+  CONFIDENCE: 0.9
+  IOU: 0.9
