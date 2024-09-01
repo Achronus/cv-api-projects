@@ -7,7 +7,6 @@ readme = "README.md"
 
 [tool.poetry.scripts]
 run-yolo = "app.main:main"
-run-sam = "app.sam:main"
 
 [tool.poetry.dependencies]
 python = "^3.12"
