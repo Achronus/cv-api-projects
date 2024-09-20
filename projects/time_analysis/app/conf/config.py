@@ -1,7 +1,7 @@
 from pathlib import Path
 from typing import Annotated, Any
 
-from app.conf.validators import str_to_path
+from projects.time_analysis.app.conf.validators import str_to_path
 
 from pydantic import BaseModel, BeforeValidator
 from pydantic_settings import (
@@ -39,7 +39,7 @@ class Settings(BaseSettings):
     THRESHOLD: Thresholds
     VIDEO: VideoSpecs
 
-    model_config = SettingsConfigDict(yaml_file="config.yaml")
+    model_config = SettingsConfigDict(yaml_file="projects/time_analysis/config.yaml")
 
     @classmethod
     def settings_customise_sources(

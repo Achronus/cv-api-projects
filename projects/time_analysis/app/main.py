@@ -1,4 +1,4 @@
-from app.conf.config import SETTINGS
+from projects.time_analysis.app.conf.config import SETTINGS
 
 import numpy as np
 import cv2
@@ -14,7 +14,7 @@ def annotate_frame(
     detections: sv.Detections,
     methods: list[BaseAnnotator],
     labels: list[str] | None = None,
-):
+) -> np.ndarray:
     """
     Annotates a frame using a list of supervision annotators.
 
@@ -57,8 +57,13 @@ def main() -> None:
     def process_frame(
         model: YOLO, frame: np.ndarray, methods: list[BaseAnnotator]
     ) -> np.ndarray:
-        results = model(frame)[0]
+        results: YOLO = model(
+            frame,
+            conf=SETTINGS.THRESHOLD.CONFIDENCE,
+            iou=SETTINGS.THRESHOLD.IOU,
+        )[0]
         detections = sv.Detections.from_ultralytics(results)
+        detections = detections[detections.class_id == 0]
         detections = tracker.update_with_detections(detections)
 
         labels = [
