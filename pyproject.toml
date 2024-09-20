@@ -6,7 +6,8 @@ authors = ["Ryan Partridge <rpartridge101@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.scripts]
-time-analysis = "projects.time_analysis.main:main"
+time-analysis = "projects.time_analysis.app.main:main"
+draw-box = "projects.time_analysis.utils.draw_box:run"
 
 [tool.poetry.dependencies]
 python = "^3.12"
@@ -15,6 +16,7 @@ ultralytics = "^8.2.98"
 pydantic = "^2.9.2"
 pydantic-settings = "^2.5.2"
 torch = "^2.4.1"
+opencv-contrib-python = "^4.10.0.84"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.3"
